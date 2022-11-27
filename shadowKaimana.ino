@@ -516,7 +516,7 @@ int pollSwitches(void)
 
   // test switch and set LED based on result
   // Reversing logic due to HK and KKK being always grounded on OG Hitbox PCB
-  // To enable 
+  // To enable add ! character before digitalRead(PIN_K3) just down this line
   if(digitalRead(PIN_K3))
   {
     switchActivity |= ATTACK_K3;
@@ -543,7 +543,9 @@ int pollSwitches(void)
 
 
   // test switch and set LED based on result
-  if(!digitalRead(PIN_K4))
+  // Reversing logic due to HK and KKK being always grounded on OG Hitbox PCB
+  // To enable add ! character before digitalRead(PIN_K4) just down this line
+  if(digitalRead(PIN_K4))
   {
     switchActivity |= ATTACK_K4;
 
@@ -649,7 +651,7 @@ int tourneypollSwitches(void)
   static uint16_t  switchActivity;
 
   // test switch and set LED based on result       // HOME = GUIDE
-  if(!digitalRead(PIN_K4))
+  if(digitalRead(PIN_K4))
   {
     //Button hold to change idle animation
     holdTimeout += 1;
